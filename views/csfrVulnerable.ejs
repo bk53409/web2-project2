@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezultat</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h3>Aplikacija je ranjiva! Vaš novac prebačen je na račun napadača: <b><%= formData.odredisniRacun  %></b></h3>
+        <h4>Uplaćeni iznos: <b><%= formData.iznos  %></b></h4>
+        <p>Primijetite putanju do ovdje: pod odredisniRacun se ne nalazi račun na koji ste htjeli prebaciti novac već račun kojeg je napadač naveo. Tako nešto napadači obično stave u  <i>src</i> dio elementa slike koja ne postoji (visina i širina 0) no radi demonstracije primjera sam se odlučila na ovaj oblik prikaza ranjivosti</p>
+        <form action="/" method="get">
+            <button type="submit" class="btn btn-primary">Natrag</button>
+        </form>
+    </div>
+</body>
+</html>

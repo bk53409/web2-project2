@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=locals.title || 'Title'%></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1><b>Drugi projekt</b></h1>
+    <hr style="border: none; height: 4px; background-color: orangered;">
+    <h2>SQL umetanje (SQL Injection)</h2>
+    <p class="ms-3"><b>Upute:</b> Ovo je tipični primjer SQL ubacivanja. Ništa posebno, ali radi. Poruka je plain text, a PIN je skriven kako mora biti. Može se upisati nešto u bazu, a kad se za poruku upiše <b>' OR 1=1 #</b> (možete kopirati odavdje) onda se detektira SQL ubacivanje kao što je objašnjeno na predavnjima. Sa checkboxom ubacivanje se uključi ili isključi.</p>
+    <br>
+
+    <form id="sqlInjection" action="/" method="post">
+        <div class="form-check form-switch mb-3 mx-1">
+            <label class="form-check-label ms-2" for="ranjivost">Ranjivost</label>
+            <input class="form-check-input" type="checkbox" id="ranjivost" name="ranjivost" style="transform: scale(1.5);">
+        </div>
+        <br>
+        <div class="mb-3">
+            <label for="poruka" class="form-label">Poruka</label>
+            <input type="text" class="form-control" id="poruka" name="poruka">
+        </div>
+        <div class="mb-3">
+            <label for="pin" class="col-sm-2 col-form-label">PIN</label>
+            <input type="password" class="form-control" id="pin" name="pin" style="width: 150px;">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary btn-lg ms-5">Spremi podatke</button>
+    </form>
+
+
+    <hr style="border: none; height: 4px; background-color: orangered;">
+
+    <h2>Lažiranje zahtjeva na drugom sjedištu (Cross Site Request Forgery, CSRF)</h2>
+    <p class="ms-3"><b>Upute:</b> Ovo je primjer lažiranja zahtjeva na drugom sjedištu. Jedan od primjera u kojima se realiziraju ovakvi napadi je krađa podataka prilikom prijenosa novaca. Ako je ranjivost uključena "napadač" postavlja odredišni račun kojim zamijenjuje broj računa unesen od strane korisnika. U ovom primjeru taj račun ima vrijednost HR123456789 radi demonstracije primjera. Primjer nekog "nenapadačkog" računa može biti HR987654321</p>
+    <br>
+    <form id="csrf" action="/csrf" method="post">
+        <input type="hidden" name="token" value="XLA3cA4Mzqhoz9KgqySzAaDcgcLpFj8roWSQIcYj2fV32sftgLfE8laGBcZ9kM3v">
+        <div class="form-check form-switch mb-3 mx-1">
+            <label class="form-check-label ms-2" for="ranjivost2">Ranjivost</label>
+            <input class="form-check-input" type="checkbox" id="ranjivost2" name="ranjivost2" style="transform: scale(1.5);">
+        </div>
+        <br>
+        <div class="mb-3">
+            <label for="odredisniRacun" class="form-label">Broj računa za uplatu</label>
+            <input type="text" class="form-control" id="odredisniRacun" name="odredisniRacun">
+        </div>
+        <div class="mb-3">
+            <label for="iznos" class="col-sm-2 col-form-label">Iznos</label>
+            <input type="text" class="form-control" id="iznos" name="iznos" style="width: 150px;">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary btn-lg ms-5 mb-5">Plati</button>
+    </form>
+
+</div>
+</body>
+</html>
